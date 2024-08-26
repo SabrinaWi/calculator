@@ -1,0 +1,70 @@
+html {
+  box-sizing: border-box;
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+}
+
+header {
+  display: flex;
+  min-height: 10dvh;
+  font-size: 4rem;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  display: flex;
+  height: 100dvh;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  color: #f6f6f7;
+  background-color: black;
+}
+
+main {
+  display: flex;
+  height: 82dvh;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 4rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  height: 5dvh;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+footer a {
+  color: inherit;
+  overflow: hidden;
+}
+
+footer a:active {
+  display: flex;
+  align-items: flex-end;
+  color: inherit;
+}
+
+footer a img:hover {
+  transform: scale(2);
+}
+
+footer img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
