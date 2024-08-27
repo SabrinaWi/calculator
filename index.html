@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
     <script src="javascript.js" defer></script>
     <title>A Simple Calculator</title>
@@ -12,8 +19,53 @@
     <header>ALPACA'S CALCULATOR</header>
     <main>
       <div class="calculator">
-        <div class="display"></div>
-        <div class="buttons"></div>
+        <div class="display">
+          <div class="content">0</div>
+        </div>
+        <div class="buttons">
+          <div class="button-row">
+            <button type="button" id="button-7" name="button-7">7</button>
+            <button type="button" id="button-8" name="button-8">8</button>
+            <button type="button" id="button-9" name="button-9">9</button>
+            <button type="button" id="button-div" name="button-div">
+              &#47;
+            </button>
+            <button type="button" id="button-CE" name="button-CE">CE</button>
+          </div>
+          <div class="button-row">
+            <button type="button" id="button-4" name="button-4">4</button>
+            <button type="button" id="button-5" name="button-5">5</button>
+            <button type="button" id="button-6" name="button-6">6</button>
+            <button type="button" id="button-mul" name="button-mul">
+              &#42;
+            </button>
+            <button type="button" id="button-backspace" name="button-bcksp">
+              &#9003;
+            </button>
+          </div>
+          <div class="button-row">
+            <button type="button" id="button-1" name="button-1">1</button>
+            <button type="button" id="button-2" name="button-2">2</button>
+            <button type="button" id="button-3" name="button-3">3</button>
+            <button type="button" id="button-sub" name="button-sub">
+              &#45;
+            </button>
+            <button type="button" id="button-A-sub" name="button-A-sub">
+              A&#45;
+            </button>
+          </div>
+          <div class="button-row">
+            <button type="button" id="button-0" name="button-0">0</button>
+            <button type="button" id="button-dot" name="button-dot">.</button>
+            <button type="button" id="button-eq" name="button-eq">&#61;</button>
+            <button type="button" id="button-add" name="button-add">
+              &#43;
+            </button>
+            <button type="button" id="button-A-add" name="button-A-add">
+              A&#43;
+            </button>
+          </div>
+        </div>
       </div>
     </main>
     <footer>
