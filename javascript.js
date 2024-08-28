@@ -51,6 +51,7 @@ btns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     deactivateBtns(btns); //remove visual active state from previously used button
     activateBtn(btn); //mark current button visually as active
+    showBtnValue(btn);
   });
 });
 
@@ -62,4 +63,18 @@ function activateBtn(button) {
 //remove (visual) active state from previously active buttons
 function deactivateBtns(buttons) {
   buttons.forEach((button) => button.classList.remove("active"));
+}
+
+//Show clicked button value in display
+
+const display = document.querySelector(".display");
+
+function showBtnValue(button) {
+  if (
+    button.classList.contains("num-btn") || //display shows what button was pressed for numbers and operators
+    button.classList.contains("op-btn") //TODO dot button needs to add decimals visually
+    //TODO display needs to show full operation
+  ) {
+    display.textContent = button.textContent;
+  }
 }

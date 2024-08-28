@@ -110,32 +110,17 @@ button.active {
   box-shadow: inset 0.04em 0.04em 0.04em rgba(0, 0, 0, 0.7);
 }
 
-#button-0,
-#button-1,
-#button-2,
-#button-3,
-#button-4,
-#button-5,
-#button-6,
-#button-7,
-#button-8,
-#button-9 {
+.num-btn {
   background-color: #e9f500;
 }
 
-#button-div,
-#button-mul,
-#button-sub,
-#button-add,
-#button-eq,
-#button-dot {
+.op-btn,
+#btn-dot {
   background-color: #d65b00;
 }
 
-#button-CE,
-#button-backspace,
-#button-A-sub,
-#button-A-add {
+.special-btn,
+.paca-btn {
   background-color: #df0000;
 }
 
