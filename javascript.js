@@ -42,3 +42,24 @@ function operate(op1, op2, operator) {
       return "error";
   }
 }
+
+//Select buttons
+
+const btns = document.querySelectorAll("button");
+
+btns.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    deactivateBtns(btns); //remove visual active state from previously used button
+    activateBtn(btn); //mark current button visually as active
+  });
+});
+
+//show visually when a button is active/has been clicked
+function activateBtn(button) {
+  button.classList.add("active");
+}
+
+//remove (visual) active state from previously active buttons
+function deactivateBtns(buttons) {
+  buttons.forEach((button) => button.classList.remove("active"));
+}
