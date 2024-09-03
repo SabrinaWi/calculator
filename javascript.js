@@ -22,9 +22,21 @@ function divide(a, b) {
 
 //Operation variables
 
-let op1; //1st operand
-let op2; //2nd operand
-let operator; //operator
+let num1 = []; //1st operand, use array to store multiple digits
+let num2 = []; //2nd operand, use array to store multiple digits
+let op; //operator
+
+function stringFromInput(input) {
+  const inputString = input.join("");
+  return inputString;
+}
+
+function numberFromInput(input) {
+  const inputNumber = parseFloat(stringFromInput(input));
+  return inputNumber;
+}
+
+//Object for storing current variables
 
 //Basic operation
 
@@ -40,41 +52,5 @@ function operate(op1, op2, operator) {
       return divide(op1, op2);
     default:
       return "error";
-  }
-}
-
-//Select buttons
-
-const btns = document.querySelectorAll("button");
-
-btns.forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    deactivateBtns(btns); //remove visual active state from previously used button
-    activateBtn(btn); //mark current button visually as active
-    showBtnValue(btn);
-  });
-});
-
-//show visually when a button is active/has been clicked
-function activateBtn(button) {
-  button.classList.add("active");
-}
-
-//remove (visual) active state from previously active buttons
-function deactivateBtns(buttons) {
-  buttons.forEach((button) => button.classList.remove("active"));
-}
-
-//Show clicked button value in display
-
-const display = document.querySelector(".display");
-
-function showBtnValue(button) {
-  if (
-    button.classList.contains("num-btn") || //display shows what button was pressed for numbers and operators
-    button.classList.contains("op-btn") //TODO dot button needs to add decimals visually
-    //TODO display needs to show full operation
-  ) {
-    display.textContent = button.textContent;
   }
 }
