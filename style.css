@@ -119,7 +119,8 @@ button.active {
   background-color: #d65b00;
 }
 
-.special-btn,
+#btn-bcksp,
+#btn-CE,
 .paca-btn {
   background-color: #df0000;
 }
