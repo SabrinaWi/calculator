@@ -115,6 +115,7 @@ button.active {
 }
 
 .op-btn,
+#btn-eq,
 #btn-dot {
   background-color: #d65b00;
 }

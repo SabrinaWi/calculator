@@ -20,11 +20,12 @@ function divide(a, b) {
   return quot;
 }
 
-//Variables for storing input
+//Variables for storing input and results
 
 let num1 = []; //1st operand, use array to store multiple digits
 let num2 = []; //2nd operand, use array to store multiple digits
 let op; //operator
+let result;
 
 function stringFromInput(input) {
   const inputString = input.join("");
@@ -109,19 +110,45 @@ function storeOpBtnInput(opBtn) {
   }
 }
 
+//Turn saved input into numbers and operators
+
+function getOperationObject(num1, num2, op) {
+  return {
+    op1: parseFloat(num1.join("")),
+    op2: parseFloat(num2.join("")),
+    operator: op,
+  };
+}
+
+//Equals button
+
+const eqBtn = document.querySelector("#btn-eq");
+
+eqBtn.addEventListener("click", (event) => {
+  if (num1 && num2 && op) {
+    const operation = getOperationObject(num1, num2, op);
+    operate(operation);
+  }
+});
+
 //Basic operation
 
-function operate(op1, op2, operator) {
-  switch (operator) {
+function operate(operation) {
+  switch (operation.operator) {
     case "+":
-      return add(op1, op2);
+      result = add(operation.op1, operation.op2);
+      break;
     case "-":
-      return subtract(op1, op2);
+      result = subtract(operation.op1, operation.op2);
+      break;
     case "*":
-      return multiply(op1, op2);
+      result = multiply(operation.op1, operation.op2);
+      break;
     case "/":
-      return divide(op1, op2);
+      result = divide(operation.op1, operation.op2);
+      break;
     default:
-      return "error";
+      result = "error";
   }
+  return result;
 }
