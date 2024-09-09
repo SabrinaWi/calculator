@@ -27,18 +27,6 @@ let num2 = []; //2nd operand, use array to store multiple digits
 let op; //operator
 let result;
 
-function stringFromInput(input) {
-  const inputString = input.join("");
-  return inputString;
-}
-
-function numberFromInput(input) {
-  const inputNumber = parseFloat(stringFromInput(input));
-  return inputNumber;
-}
-
-//Object for storing current variables
-
 //Select buttons
 
 const btns = document.querySelectorAll("button");
@@ -110,7 +98,7 @@ function storeOpBtnInput(opBtn) {
   }
 }
 
-//Turn saved input into numbers and operators
+//Object for storing current variables
 
 function getOperationObject(num1, num2, op) {
   return {
@@ -152,3 +140,37 @@ function operate(operation) {
   }
   return result;
 }
+
+//Dot button/decimal point
+
+const dotBtn = document.querySelector("#btn-dot");
+
+dotBtn.addEventListener("click", (event) => {
+  if (num1 && !op) {
+    {
+      if (num1.includes(".")) {
+        //do nothing, decimal point already exists
+      } else {
+        num1.push(".");
+      }
+    }
+    if (num1[0] === ".") {
+      //adds a "0" to the beginning of the array if the first thing entered is the decimal point
+      num1.unshift("0");
+    }
+    return num1;
+  } else if (num1 && op) {
+    {
+      if (num2.includes(".")) {
+        //do nothing, decimal point already exists
+      } else {
+        num2.push(".");
+      }
+    }
+    if (num2[0] === ".") {
+      //adds a "0" to the beginning of the array if the first thing entered is the decimal point
+      num2.unshift("0");
+    }
+    return num2;
+  }
+});
