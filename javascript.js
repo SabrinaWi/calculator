@@ -174,3 +174,15 @@ dotBtn.addEventListener("click", (event) => {
     return num2;
   }
 });
+
+//CE button
+
+const ceBtn = document.querySelector("#btn-CE");
+
+ceBtn.addEventListener("click", (event) => {
+  num1 = [];
+  num2 = [];
+  op = "";
+  result = "";
+  deactivateBtns(btns);
+});
