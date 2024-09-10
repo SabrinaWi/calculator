@@ -35,6 +35,7 @@ btns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     deactivateBtns(btns); //remove visual active state from previously used button
     activateBtn(btn); //mark current button visually as active
+    updateDisplay(num1, num2, op, result);
   });
 });
 
@@ -55,6 +56,7 @@ const numBtns = document.querySelectorAll(".num-btn");
 numBtns.forEach((numBtn) => {
   numBtn.addEventListener("click", (event) => {
     storeNumBtnInput(numBtn);
+    updateDisplay(num1, num2, op, result);
   });
 });
 
@@ -77,6 +79,7 @@ const opBtns = document.querySelectorAll(".op-btn");
 opBtns.forEach((opBtn) => {
   opBtn.addEventListener("click", (event) => {
     storeOpBtnInput(opBtn);
+    updateDisplay(num1, num2, op, result);
   });
 });
 
@@ -116,6 +119,7 @@ eqBtn.addEventListener("click", (event) => {
   if (num1 && num2 && op) {
     const operation = getOperationObject(num1, num2, op);
     operate(operation);
+    updateDisplay(num1, num2, op, result);
   }
 });
 
@@ -173,6 +177,7 @@ dotBtn.addEventListener("click", (event) => {
     }
     return num2;
   }
+  updateDisplay(num1, num2, op, result);
 });
 
 //CE button
@@ -184,5 +189,28 @@ ceBtn.addEventListener("click", (event) => {
   num2 = [];
   op = "";
   result = "";
+  currentDisplay = "0";
+  updateDisplay(num1, num2, op, result);
   deactivateBtns(btns);
 });
+
+//display input
+
+const display = document.querySelector(".display .content");
+
+let currentDisplay = 0;
+display.textContent = currentDisplay;
+
+function updateDisplay(num1, num2, op, result) {
+  const opObj = getOperationObject(num1, num2, op, result);
+  if (num1.length && !op && !num2.length && !result) {
+    currentDisplay = opObj.op1;
+  } else if (num1.length && op && !num2.length && !result) {
+    currentDisplay = opObj.op1 + " " + opObj.operator;
+  } else if (num1.length && op && num2.length && !result) {
+    currentDisplay = opObj.op1 + " " + opObj.operator + " " + opObj.op2;
+  } else if (num1.length && op && num2.length && result) {
+    currentDisplay = result;
+  }
+  display.textContent = currentDisplay;
+}
