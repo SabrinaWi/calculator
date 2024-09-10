@@ -84,7 +84,7 @@ opBtns.forEach((opBtn) => {
 });
 
 function storeOpBtnInput(opBtn) {
-  if (num1) {
+  if (num1.length && !op && !num2.length && !result) {
     switch (opBtn.name) {
       //stores new input in op as long as there there is already a num1
       case "btn-add":
@@ -96,9 +96,32 @@ function storeOpBtnInput(opBtn) {
       case "btn-div":
         return (op = "/");
       default:
-        return "error";
+        return { error: "Invalid operator" };
+    }
+  } else if (result) {
+    //user can continue with the result of a previous operation
+    num1 = [result];
+    num2 = [];
+    op = "";
+    result = ""; //this has to be here or the conditions for updateDisplay() don't work anymore!
+    switch (opBtn.name) {
+      case "btn-add":
+        return (op = "+");
+      case "btn-sub":
+        return (op = "-");
+      case "btn-mul":
+        return (op = "*");
+      case "btn-div":
+        return (op = "/");
+      default:
+        return { error: "Invalid operator" };
     }
   }
+  return {
+    num1: num1,
+    num2: num2,
+    op: op,
+  };
 }
 
 //Object for storing current variables
