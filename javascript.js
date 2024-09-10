@@ -116,7 +116,7 @@ function getOperationObject(num1, num2, op) {
 const eqBtn = document.querySelector("#btn-eq");
 
 eqBtn.addEventListener("click", (event) => {
-  if (num1 && num2 && op) {
+  if (num1.length && num2.length && op) {
     const operation = getOperationObject(num1, num2, op);
     operate(operation);
     updateDisplay(num1, num2, op, result);
@@ -150,7 +150,7 @@ function operate(operation) {
 const dotBtn = document.querySelector("#btn-dot");
 
 dotBtn.addEventListener("click", (event) => {
-  if (num1 && !op) {
+  if (num1.length && !op) {
     {
       if (num1.includes(".")) {
         //do nothing, decimal point already exists
@@ -163,7 +163,7 @@ dotBtn.addEventListener("click", (event) => {
       num1.unshift("0");
     }
     return num1;
-  } else if (num1 && op) {
+  } else if (num1.length && op) {
     {
       if (num2.includes(".")) {
         //do nothing, decimal point already exists
