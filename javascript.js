@@ -173,7 +173,7 @@ function operate(operation) {
 const dotBtn = document.querySelector("#btn-dot");
 
 dotBtn.addEventListener("click", (event) => {
-  if (num1.length && !op) {
+  if (!op) {
     {
       if (num1.includes(".")) {
         //do nothing, decimal point already exists
