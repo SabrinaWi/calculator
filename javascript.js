@@ -102,7 +102,6 @@ function storeOpBtnInput(opBtn) {
     //user can continue with the result of a previous operation
     num1 = [result];
     num2 = [];
-    op = "";
     result = ""; //this has to be here or the conditions for updateDisplay() don't work anymore!
     switch (opBtn.name) {
       case "btn-add":
@@ -217,6 +216,32 @@ ceBtn.addEventListener("click", (event) => {
   deactivateBtns(btns);
 });
 
+//backspace button
+
+const bckspBtn = document.querySelector("#btn-bcksp");
+
+bckspBtn.addEventListener("click", (event) => {
+  removeLastInput(num1, num2, op, result);
+  updateDisplay(num1, num2, op, result);
+});
+
+function removeLastInput() {
+  if (num1.length && !op && !num2.length && !result) {
+    num1.pop();
+    return num1;
+  } else if (num1.length && op && !num2.length && !result) {
+    op = "";
+    return op;
+  } else if (num1.length && op && num2.length && !result) {
+    num2.pop();
+    return num2;
+  } else if (num1.length && op && num2.length && result) {
+    result = result.toString().slice(0, -1); //turns result into string temporarily to make it possible to use backspace on the result
+    result = result ? Number(result) : 0; // turns it back into a number and ensures result is 0 if empty
+    return result;
+  }
+}
+
 //display input
 
 const display = document.querySelector(".display .content");
@@ -234,6 +259,8 @@ function updateDisplay(num1, num2, op, result) {
     currentDisplay = opObj.op1 + " " + opObj.operator + " " + opObj.op2;
   } else if (num1.length && op && num2.length && result) {
     currentDisplay = result;
+  } else {
+    currentDisplay = "0";
   }
   display.textContent = currentDisplay;
 }
