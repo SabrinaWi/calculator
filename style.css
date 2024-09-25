@@ -79,6 +79,7 @@ button {
   text-align: right;
   width: 80%;
   height: 80%;
+  white-space: nowrap;
 }
 
 .buttons {

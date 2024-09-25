@@ -35,7 +35,7 @@ btns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     deactivateBtns(btns); //remove visual active state from previously used button
     activateBtn(btn); //mark current button visually as active
-    updateDisplayContent(num1, num2, op, result);
+    updateDisplay(num1, num2, op, result);
   });
 });
 
@@ -56,7 +56,7 @@ const numBtns = document.querySelectorAll(".num-btn");
 numBtns.forEach((numBtn) => {
   numBtn.addEventListener("click", (event) => {
     storeNumBtnInput(numBtn);
-    updateDisplayContent(num1, num2, op, result);
+    updateDisplay(num1, num2, op, result);
   });
 });
 
@@ -79,7 +79,7 @@ const opBtns = document.querySelectorAll(".op-btn");
 opBtns.forEach((opBtn) => {
   opBtn.addEventListener("click", (event) => {
     storeOpBtnInput(opBtn);
-    updateDisplayContent(num1, num2, op, result);
+    updateDisplay(num1, num2, op, result);
   });
 });
 
@@ -102,7 +102,7 @@ function storeOpBtnInput(opBtn) {
     //user can continue with the result of a previous operation
     num1 = [result];
     num2 = [];
-    result = ""; //this has to be here or the conditions for updateDisplayContent() don't work anymore!
+    result = ""; //this has to be here or the conditions for updateDisplay() don't work anymore!
     switch (opBtn.name) {
       case "btn-add":
         return (op = "+");
@@ -141,7 +141,7 @@ eqBtn.addEventListener("click", (event) => {
   if (num1.length && num2.length && op) {
     const operation = getOperationObject(num1, num2, op);
     operate(operation);
-    updateDisplayContent(num1, num2, op, result);
+    updateDisplay(num1, num2, op, result);
   }
 });
 
@@ -200,7 +200,7 @@ dotBtn.addEventListener("click", (event) => {
     }
     return num2;
   }
-  updateDisplayContent(num1, num2, op, result);
+  updateDisplay(num1, num2, op, result);
 });
 
 //CE button
@@ -212,8 +212,8 @@ ceBtn.addEventListener("click", (event) => {
   num2 = [];
   op = "";
   result = "";
-  currentDisplayContent = "0";
-  updateDisplayContent(num1, num2, op, result);
+  currentDisplay = "0";
+  updateDisplay(num1, num2, op, result);
   deactivateBtns(btns);
 });
 
@@ -223,7 +223,7 @@ const bckspBtn = document.querySelector("#btn-bcksp");
 
 bckspBtn.addEventListener("click", (event) => {
   removeLastInput();
-  updateDisplayContent(num1, num2, op, result);
+  updateDisplay(num1, num2, op, result);
 });
 
 function removeLastInput() {
@@ -245,24 +245,23 @@ function removeLastInput() {
 
 //display input
 
-const display = document.querySelector(".display");
-const displayContent = document.querySelector(".display .content");
+const display = document.querySelector(".display .content");
 
-let currentDisplayContent = 0;
-displayContent.textContent = currentDisplayContent;
+let currentDisplay = 0;
+display.textContent = currentDisplay;
 
-function updateDisplayContent(num1, num2, op, result) {
+function updateDisplay(num1, num2, op, result) {
   const opObj = getOperationObject(num1, num2, op, result);
   if (num1.length && !op && !num2.length && !result) {
-    currentDisplayContent = opObj.op1;
+    currentDisplay = opObj.op1;
   } else if (num1.length && op && !num2.length && !result) {
-    currentDisplayContent = opObj.op1 + " " + opObj.operator;
+    currentDisplay = opObj.op1 + " " + opObj.operator;
   } else if (num1.length && op && num2.length && !result) {
-    currentDisplayContent = opObj.op1 + " " + opObj.operator + " " + opObj.op2;
+    currentDisplay = opObj.op1 + " " + opObj.operator + " " + opObj.op2;
   } else if (num1.length && op && num2.length && result) {
-    currentDisplayContent = result;
+    currentDisplay = result;
   } else {
-    currentDisplayContent = "0";
+    currentDisplay = "0";
   }
-  displayContent.textContent = currentDisplayContent;
+  display.textContent = currentDisplay;
 }
