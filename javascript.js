@@ -164,6 +164,7 @@ function operate(operation) {
     default:
       result = "error";
   }
+  result = Math.round(result * 10000) / 10000;
   return result;
 }
 
@@ -221,7 +222,7 @@ ceBtn.addEventListener("click", (event) => {
 const bckspBtn = document.querySelector("#btn-bcksp");
 
 bckspBtn.addEventListener("click", (event) => {
-  removeLastInput(num1, num2, op, result);
+  removeLastInput();
   updateDisplay(num1, num2, op, result);
 });
 
