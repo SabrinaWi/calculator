@@ -98,6 +98,25 @@ function storeOpBtnInput(opBtn) {
       default:
         return { error: "Invalid operator" };
     }
+  } else if (num1.length && op && num2.length && !result) {
+    //user can push operator and force a result to continue with operation
+    const operation = getOperationObject(num1, num2, op);
+    operate(operation);
+    num1 = [result];
+    num2 = [];
+    result = ""; //this has to be here or the conditions for updateDisplay() don't work anymore!
+    switch (opBtn.name) {
+      case "btn-add":
+        return (op = "+");
+      case "btn-sub":
+        return (op = "-");
+      case "btn-mul":
+        return (op = "*");
+      case "btn-div":
+        return (op = "/");
+      default:
+        return { error: "Invalid operator" };
+    }
   } else if (result) {
     //user can continue with the result of a previous operation
     num1 = [result];
@@ -164,7 +183,7 @@ function operate(operation) {
     default:
       result = "error";
   }
-  result = Math.round(result * 10000) / 10000;
+  result = Math.round(result * 10000) / 10000; //round result to avoid long decimals
   return result;
 }
 
