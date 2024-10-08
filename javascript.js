@@ -85,7 +85,7 @@ opBtns.forEach((opBtn) => {
 
 function storeOpBtnInput(opBtn) {
   if (num1.length && !op && !num2.length && !result) {
-    switch (opBtn.name) {
+    switch (opBtn.id) {
       //stores new input in op as long as there there is already a num1
       case "btn-add":
         return (op = "+");
@@ -105,7 +105,7 @@ function storeOpBtnInput(opBtn) {
     num1 = [result];
     num2 = [];
     result = ""; //this has to be here or the conditions for updateDisplay() don't work anymore!
-    switch (opBtn.name) {
+    switch (opBtn.id) {
       case "btn-add":
         return (op = "+");
       case "btn-sub":
@@ -122,7 +122,7 @@ function storeOpBtnInput(opBtn) {
     num1 = [result];
     num2 = [];
     result = ""; //this has to be here or the conditions for updateDisplay() don't work anymore!
-    switch (opBtn.name) {
+    switch (opBtn.id) {
       case "btn-add":
         return (op = "+");
       case "btn-sub":
@@ -261,6 +261,27 @@ function removeLastInput() {
     return result;
   }
 }
+
+//add keyboard support
+
+function keyPress(event) {
+  const key = event.key;
+  keyToButton(key);
+}
+
+function keyToButton(key) {
+  btns.forEach((btn) => {
+    // compares the key to the button's name attribute
+    if (key == btn.name) {
+      console.log(key);
+      console.log(btn.name); // For debugging purposes, log the button's name
+
+      btn.click(); // Reuse my existing button click logic
+    }
+  });
+}
+
+window.addEventListener("keydown", keyPress);
 
 //display input
 
