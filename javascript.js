@@ -273,9 +273,6 @@ function keyToButton(key) {
   btns.forEach((btn) => {
     // compares the key to the button's name attribute
     if (key == btn.name) {
-      console.log(key);
-      console.log(btn.name); // For debugging purposes, log the button's name
-
       btn.click(); // Reuse my existing button click logic
     }
   });
@@ -304,4 +301,13 @@ function updateDisplay(num1, num2, op, result) {
     currentDisplay = "0";
   }
   display.textContent = currentDisplay;
+  updateFontSize();
+}
+
+function updateFontSize() {
+  if (display.scrollWidth > display.clientWidth) {
+    display.style.fontSize = "5rem"; // shrinks font if content overflows
+  } else {
+    display.style.fontSize = "10rem"; // default size
+  }
 }
