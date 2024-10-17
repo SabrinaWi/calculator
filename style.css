@@ -51,6 +51,14 @@ main {
   padding: 3rem;
 }
 
+.calculator.alpacalypse-img {
+  background-color: #000;
+  background-image: url(./img/alpacalypse.jpeg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .calculator,
 .display,
 .buttons,

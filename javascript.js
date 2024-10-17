@@ -161,6 +161,7 @@ eqBtn.addEventListener("click", (event) => {
     const operation = getOperationObject(num1, num2, op);
     operate(operation);
     updateDisplay(num1, num2, op, result);
+    divideByZero(op, num2);
   }
 });
 
@@ -282,10 +283,11 @@ window.addEventListener("keydown", keyPress);
 
 //display input
 
-const display = document.querySelector(".display .content");
+const display = document.querySelector(".display");
+const displayContent = document.querySelector(".display .content");
 
 let currentDisplay = 0;
-display.textContent = currentDisplay;
+displayContent.textContent = currentDisplay;
 
 function updateDisplay(num1, num2, op, result) {
   const opObj = getOperationObject(num1, num2, op, result);
@@ -300,7 +302,7 @@ function updateDisplay(num1, num2, op, result) {
   } else {
     currentDisplay = "0";
   }
-  display.textContent = currentDisplay;
+  displayContent.textContent = currentDisplay;
   updateFontSize();
 }
 
@@ -311,3 +313,39 @@ function updateFontSize() {
     display.style.fontSize = "10rem"; // default size
   }
 }
+
+//divide by zero
+
+function divideByZero(op, num2) {
+  if (op == "/" && num2 == 0) {
+    console.log("The Alpacalypse has come");
+    addAlpacalypse();
+  }
+}
+
+const calculator = document.querySelector(".calculator");
+
+function addAlpacalypse() {
+  calculator.replaceChildren();
+  calculator.classList.add("alpacalypse-img");
+}
+
+const buttons = document.querySelector(".buttons");
+
+//restore original layout at any type of button click if there was a divide by zero event
+
+function removeAlpacalypse() {
+  if (calculator.classList.contains("alpacalypse-img")) {
+    calculator.classList.remove("alpacalypse-img");
+    calculator.appendChild(display);
+    displayContent.textContent = "-_-";
+    updateFontSize();
+    calculator.appendChild(buttons);
+  }
+}
+
+document.body.addEventListener("keydown", function (e) {
+  if (e.key == "Escape") {
+    removeAlpacalypse();
+  }
+});
