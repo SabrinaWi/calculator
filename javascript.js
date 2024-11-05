@@ -318,7 +318,6 @@ function updateFontSize() {
 
 function divideByZero(op, num2) {
   if (op == "/" && num2 == 0) {
-    console.log("The Alpacalypse has come");
     addAlpacalypse();
   }
 }
@@ -338,9 +337,14 @@ function removeAlpacalypse() {
   if (calculator.classList.contains("alpacalypse-img")) {
     calculator.classList.remove("alpacalypse-img");
     calculator.appendChild(display);
-    displayContent.textContent = "-_-";
     updateFontSize();
     calculator.appendChild(buttons);
+    num1 = [];
+    num2 = [];
+    op = "";
+    result = "";
+    currentDisplay = "0";
+    updateDisplay(num1, num2, op, result);
   }
 }
 
