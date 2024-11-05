@@ -84,7 +84,22 @@ opBtns.forEach((opBtn) => {
 });
 
 function storeOpBtnInput(opBtn) {
-  if (num1.length && !op && !num2.length && !result) {
+  if (!num1.length && !op && !num2.length && !result) {
+    num1 = [0]; //user can press operator button while the initial 0 is in display and 0 becomes num1
+    switch (opBtn.id) {
+      //stores new input in op as long as there there is already a num1
+      case "btn-add":
+        return (op = "+");
+      case "btn-sub":
+        return (op = "-");
+      case "btn-mul":
+        return (op = "*");
+      case "btn-div":
+        return (op = "/");
+      default:
+        return { error: "Invalid operator" };
+    }
+  } else if (num1.length && !op && !num2.length && !result) {
     switch (opBtn.id) {
       //stores new input in op as long as there there is already a num1
       case "btn-add":
