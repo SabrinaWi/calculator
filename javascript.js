@@ -248,6 +248,7 @@ ceBtn.addEventListener("click", (event) => {
   op = "";
   result = "";
   currentDisplay = "0";
+  alpacaCount = "0";
   updateDisplay(num1, num2, op, result);
   deactivateBtns(btns);
 });
@@ -368,3 +369,47 @@ document.body.addEventListener("keydown", function (e) {
     removeAlpacalypse();
   }
 });
+
+//alpaca image: The A+ and A- buttons
+
+let alpacaCount = "3";
+
+let alpacaImg = document.createElement("img");
+alpacaImg.src = "./img/paca.svg";
+
+const addAlpacaBtn = document.querySelector("#btn-A-add");
+
+addAlpacaBtn.addEventListener("click", (event) => {
+  //
+  addAlpaca();
+});
+
+//TODO somehow this^ puts the 0 back into the display, probably bc it is only removed in the function, figure out how to do this right
+
+function addAlpaca() {
+  ++alpacaCount;
+  displayContent.textContent = alpacaCount + " x";
+  displayContent.appendChild(alpacaImg);
+  displayContent.classList.add("alpaca");
+}
+const subAlpacaBtn = document.querySelector("#btn-A-sub");
+
+subAlpacaBtn.addEventListener("click", (event) => {
+  //
+  subAlpaca();
+});
+
+function subAlpaca() {
+  if (alpacaCount <= 3) {
+    alert(
+      "Stop! Alpacas are herd animals! If there are less than 3 alpacas, they get sad!"
+    );
+    displayContent.removeChild(alpacaImg);
+    displayContent.classList.remove("alpaca");
+  } else {
+    --alpacaCount;
+    displayContent.textContent = alpacaCount + " x";
+    displayContent.appendChild(alpacaImg);
+    displayContent.classList.add("alpaca");
+  }
+}

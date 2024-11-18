@@ -90,6 +90,14 @@ button {
   white-space: nowrap;
 }
 
+.display .content.alpaca img {
+  /* careful here, if there is a space between .content and .alpaca, the img element is not targeted */
+  display: inline-block;
+  height: 80%;
+  aspect-ratio: auto;
+  text-align: right;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
