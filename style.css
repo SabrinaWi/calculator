@@ -43,11 +43,10 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  width: 35%;
   aspect-ratio: 1 / 1;
   background-color: #1dffff;
   box-shadow: inset 0.3em 0.3em 0.4em rgba(0, 0, 0, 0.5);
-
   padding: 3rem;
 }
 
@@ -72,8 +71,7 @@ button {
   justify-content: end;
   align-items: center;
   font-family: "Micro 5", Arial, sans-serif;
-  font-size: 10rem;
-  overflow: auto;
+  font-size: 8rem;
   height: 30%;
   width: 100%;
   background-color: #d2d5da;
@@ -84,10 +82,15 @@ button {
 }
 
 .display .content {
+  display: flex;
+  justify-content: right;
+  align-items: center;
   text-align: right;
-  width: 80%;
+  overflow: hidden;
+  width: 100%;
   height: 80%;
   white-space: nowrap;
+  padding: 0.5rem;
 }
 
 .display .content.alpaca img {

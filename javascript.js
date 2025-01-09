@@ -319,15 +319,6 @@ function updateDisplay(num1, num2, op, result) {
     currentDisplay = "0";
   }
   displayContent.textContent = currentDisplay;
-  updateFontSize();
-}
-
-function updateFontSize() {
-  if (display.scrollWidth > display.clientWidth) {
-    display.style.fontSize = "5rem"; // shrinks font if content overflows
-  } else {
-    display.style.fontSize = "10rem"; // default size
-  }
 }
 
 //divide by zero
@@ -353,7 +344,6 @@ function removeAlpacalypse() {
   if (calculator.classList.contains("alpacalypse-img")) {
     calculator.classList.remove("alpacalypse-img");
     calculator.appendChild(display);
-    updateFontSize();
     calculator.appendChild(buttons);
     num1 = [];
     num2 = [];
